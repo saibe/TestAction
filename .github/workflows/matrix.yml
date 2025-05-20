@@ -1,9 +1,8 @@
 name: Matrix Lab
 on:
-  workflow_dispatch:
-
+  workflow_call:
 jobs:
-  matrix-job:
+  example_matrix:
     strategy:
       max-parallel: 2
       matrix:
@@ -13,12 +12,11 @@ jobs:
           - os: windows-latest
             node: 16
             npm: 6
-            
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/setup-node@v3.9.1
+      - uses: actions/setup-node@v4
         with:
-          node-version: ${{matrix.node}}
-      - if: ${{matrix.npm}}
+          node-version: ${{ matrix.node }}
+      - if: ${{ matrix.npm }}
         run: npm install -g npm@${{ matrix.npm }}
       - run: npm --version
