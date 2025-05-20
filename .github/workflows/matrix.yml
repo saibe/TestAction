@@ -18,4 +18,4 @@ jobs:
       steps:
         - uses: actions/setup-node@v3.9.1
           with:
-            node-version: ${{ matix.node }}
+            node-version: ${{ matrix.node }}
